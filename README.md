@@ -34,6 +34,7 @@ Sterowanie:
     - [Prawy Przycisk Myszy] - usuń komórkę
 
 Reguły gry Conwaya (23/3):
+
     - Żywa komórka przeżywa, jeśli ma 2 lub 3 sąsiadów,
     - Martwa komórka odradza się, jeśli ma dokładnie 3 sąsiadów,
     - W innych przypadkach komórka umiera lub pozostaje martwa
