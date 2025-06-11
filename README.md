@@ -12,14 +12,14 @@ Wymagania:
 
 
 Instalacja:
-    - pip install numpy pygame
+     pip install numpy pygame
 
 
 Uruchomienie:
 
     1. Uruchom ekran startowy (z ustawieniami planszy):
         - przejdź do folderu, w którym znajduje się launcher.py
-	-uruchom program: python launcher.py
+	- uruchom program: python launcher.py
     2. Wprowadź parametry (liczba kolumn,wierszy,FPS)
     3. Kliknij na przycisk 'Start gry', a uruchomi się plansza w pygame
 
