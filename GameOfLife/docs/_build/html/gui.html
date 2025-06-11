@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="pl" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>gui module &#8212; game of life 0 - dokumentacja</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=4c645c95"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=2827c288"></script>
+    <link rel="index" title="Indeks" href="genindex.html" />
+    <link rel="search" title="Szukaj" href="search.html" />
+    <link rel="next" title="launcher module" href="launcher.html" />
+    <link rel="prev" title="game module" href="game.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-gui">
+<span id="gui-module"></span><h1>gui module<a class="headerlink" href="#module-gui" title="Link to this heading">¶</a></h1>
+<p>gui.py - interfejs graficzny gry</p>
+<p>Zawiera klasę GameGUI odpowiedzialną za obsługę okna gry, planszy i interakcji
+z użytkownikiem za pomocą Pygame.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.GameGUI">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gui.</span></span><span class="sig-name descname"><span class="pre">GameGUI</span></span><a class="headerlink" href="#gui.GameGUI" title="Link to this definition">¶</a></dt>
+<dd><p>Klasy bazowe: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Klasa odpowiedzialna za graficzną obsługę gry przy pomocy pygame.</p>
+<dl class="simple">
+<dt>Obejmuje:</dt><dd><ul class="simple">
+<li><p>tworzenie planszy</p></li>
+<li><p>obsługę zdarzeń użytkownika</p></li>
+<li><p>rysowanie planszy</p></li>
+<li><p>uruchmienie pętli głównej</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.GameGUI.board_draw">
+<span class="sig-name descname"><span class="pre">board_draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.GameGUI.board_draw" title="Link to this definition">¶</a></dt>
+<dd><p>Rysuje planszę gry oraz instrukcje sterowania w dolnej części okna.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.GameGUI.handle_events">
+<span class="sig-name descname"><span class="pre">handle_events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.GameGUI.handle_events" title="Link to this definition">¶</a></dt>
+<dd><p>Obsługuje zdarzenia użytkownika: klawiatura i myszka:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[Spacja]:  start/pauza gry</p></li>
+<li><p>[C]:  czyści planszę</p></li>
+<li><p>[ESC]:  kończy grę</p></li>
+<li><p>Lewy przycis myszy:  dodaj komórkę</p></li>
+<li><p>Prawy przyscisk myszy:  usuwa komórkę</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Zwraca<span class="colon">:</span></dt>
+<dd class="field-odd"><p>False jeśli użytkownik zakończył działanie, True w przeciwnym przypadku</p>
+</dd>
+<dt class="field-even">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.GameGUI.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.GameGUI.run" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Uruchamia główną pętle gry:</dt><dd><ul class="simple">
+<li><p>reaguje na zdarzenia,</p></li>
+<li><p>aktualizuje i rysuje planszę,</p></li>
+<li><p>utrzymuje płynność (FPS).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.GameGUI.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gui.GameGUI.update" title="Link to this definition">¶</a></dt>
+<dd><p>Aktualizuje planszę gry do kolejnej generacji, jeśli gra jest uruchomiona.
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">game of life</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Szukaj" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Nawigacja</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="game.html">game module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">gui module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="launcher.html">launcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">settings module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="game.html" title="poprzedni rozdział">game module</a></li>
+      <li>Next: <a href="launcher.html" title="następny rozdział">launcher module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, s29109.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/gui.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

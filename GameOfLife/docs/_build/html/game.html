@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="pl" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>game module &#8212; game of life 0 - dokumentacja</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=4c645c95"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=2827c288"></script>
+    <link rel="index" title="Indeks" href="genindex.html" />
+    <link rel="search" title="Szukaj" href="search.html" />
+    <link rel="next" title="gui module" href="gui.html" />
+    <link rel="prev" title="src" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-game">
+<span id="game-module"></span><h1>game module<a class="headerlink" href="#module-game" title="Link to this heading">¶</a></h1>
+<p>game.py - logika gry w życie Conwaya</p>
+<dl class="simple">
+<dt>Zawiera funkcje realizujące reguły automatu komórkowego Conwaya:</dt><dd><ul class="simple">
+<li><p>liczenie sąsiadów</p></li>
+<li><p>generowanie nowego stanu planszy</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py data">
+<dt class="sig sig-object py" id="game.BORN">
+<span class="sig-prename descclassname"><span class="pre">game.</span></span><span class="sig-name descname"><span class="pre">BORN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{3}</span></em><a class="headerlink" href="#game.BORN" title="Link to this definition">¶</a></dt>
+<dd><p>Zestaw liczby sąsiadów, przy których martwa komórka się odradza.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="game.SURVIVE">
+<span class="sig-prename descclassname"><span class="pre">game.</span></span><span class="sig-name descname"><span class="pre">SURVIVE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{2,</span> <span class="pre">3}</span></em><a class="headerlink" href="#game.SURVIVE" title="Link to this definition">¶</a></dt>
+<dd><p>Zestaw liczby sąsiadów, przy których żywa komórka przeżywa.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="game.count_neighbors">
+<span class="sig-prename descclassname"><span class="pre">game.</span></span><span class="sig-name descname"><span class="pre">count_neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">board</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#game.count_neighbors" title="Link to this definition">¶</a></dt>
+<dd><p>Liczy liczbę żywych sąsiadów komórki w pozycji (x,y),
+uwzględniając tylko komórki w obrębie planszy (bez cyklicznych brzegów).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parametry<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>board</strong> (<em>numpy.ndarray</em>) – Aktualna plansza gry (tablica 2D numpy)</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – Wiersz komórki</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Kolumna komórki</p></li>
+</ul>
+</dd>
+<dt class="field-even">Zwraca<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liczba sąsiadów żywych komórek</p>
+</dd>
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="game.next_generation">
+<span class="sig-prename descclassname"><span class="pre">game.</span></span><span class="sig-name descname"><span class="pre">next_generation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">board</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#game.next_generation" title="Link to this definition">¶</a></dt>
+<dd><p>Tworzy nową planszę na podstawie obecnego stanu i klasycznych reguł Conwaya.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Żywa komórka przeżywa jeśi ma 2 lub 3 sąsiadów</p></li>
+<li><p>Martwa komórka odradza się, jeśli ma dokładnie 3 sąsiadów</p></li>
+<li><p>Wszystkie inne komórki umierają lub pozostają martwe</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parametry<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>board</strong> (<em>numpy.ndarray</em>) – Aktualna plansza gry</p>
+</dd>
+<dt class="field-even">Zwraca<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nowa plansza (kolejna generacja)</p>
+</dd>
+<dt class="field-odd">Typ zwracany<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">game of life</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Szukaj" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Nawigacja</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">game module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui.html">gui module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="launcher.html">launcher module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">settings module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="modules.html" title="poprzedni rozdział">src</a></li>
+      <li>Next: <a href="gui.html" title="następny rozdział">gui module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, s29109.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/game.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
